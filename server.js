@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Инициализиране по правилния начин за новата библиотека
+// Инициализиране на Google AI
 const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post('/api/chat', async (req, res) => {
@@ -15,9 +15,9 @@ app.post('/api/chat', async (req, res) => {
         const { message } = req.body;
         if (!message) return res.status(400).json({ error: "Message is required" });
 
-        // Използваме правилния модел за текстови чатове
+        // АКТУАЛИЗИРАН МОДЕЛ ЗА 2026 Г.
         const model = ai.getGenerativeModel({ 
-            model: "gemini-1.5-flash",
+            model: "gemini-2.5-flash", 
             systemInstruction: "You are the advanced, highly intelligent STEM Girls Academy AI Mentor. You assist women in learning programming, DevOps, Cyber Security, Data Science, and UI/UX design. Always keep answers encouraging, technically accurate, highly structured, and business-focused. Respond in English."
         });
 
